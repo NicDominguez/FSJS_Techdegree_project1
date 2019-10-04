@@ -61,6 +61,7 @@ let currentQuoteGenre = ""
 // Creates a funciton to get a random number and pull a single object from the quotes array with the index of that random number
 const getRandomQuote = () => {
   let randNum = Math.floor(Math.random() * quotes.length)
+  console.log(randNum)
   return quotes[randNum]
 }
 
@@ -79,7 +80,8 @@ function getRandomColor() {
 const printQuote = () => {
   let chosenQuote = getRandomQuote()
   let displayHTML = ""
-
+  console.log(currentQuoteGenre)
+  console.log(chosenQuote.genre)
   do {
     //Constructs the displayHTML variable to include values from the chosenQuote object
     displayHTML = 
@@ -100,11 +102,11 @@ const printQuote = () => {
     // Sets background to random color
     body.style.backgroundColor = `${getRandomColor()}`
 
-    currentQuoteGenre = chosenQuote.genre   
+    currentQuoteGenre = chosenQuote.genre
+  
   }
   while (chosenQuote.genre !== currentQuoteGenre);
 
-  
 }
 
 // Sets new quote at page load
