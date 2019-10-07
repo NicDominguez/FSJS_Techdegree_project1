@@ -60,9 +60,12 @@ let currentQuoteGenre = ""
 
 // Creates a funciton to get a random number and pull a single object from the quotes array with the index of that random number
 const getRandomQuote = () => {
-  let randNum = Math.floor(Math.random() * quotes.length)
-  console.log(randNum)
-  return quotes[randNum]
+  let randNum = 0
+  do {
+    randNum = Math.floor(Math.random() * quotes.length)
+  }
+  while (quotes[randNum].genre === currentQuoteGenre);
+  return quotes[randNum] 
 }
 
 // Creates a funciton to generate a random color
@@ -80,9 +83,7 @@ function getRandomColor() {
 const printQuote = () => {
   let chosenQuote = getRandomQuote()
   let displayHTML = ""
-  console.log(currentQuoteGenre)
-  console.log(chosenQuote.genre)
-  do {
+  
     //Constructs the displayHTML variable to include values from the chosenQuote object
     displayHTML = 
       `<p class="quote">${chosenQuote.quote} </p>
@@ -95,6 +96,7 @@ const printQuote = () => {
     if (chosenQuote.year) {
       displayHTML += `<span class="year">${chosenQuote.year.toString()}</span>`
     }
+    // Adds closing paragraph tag
     displayHTML += `</p>`
 
     // Sets quotebox to the HTML in the displayHTML variable
@@ -102,11 +104,8 @@ const printQuote = () => {
     // Sets background to random color
     body.style.backgroundColor = `${getRandomColor()}`
 
+    //Sets currentQuoteGenre to the new quote genre once quote has been printed
     currentQuoteGenre = chosenQuote.genre
-  
-  }
-  while (chosenQuote.genre !== currentQuoteGenre);
-
 }
 
 // Sets new quote at page load
