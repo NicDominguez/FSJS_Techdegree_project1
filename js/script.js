@@ -96,6 +96,10 @@ const printQuote = () => {
     if (chosenQuote.year) {
       displayHTML += `<span class="year">${chosenQuote.year.toString()}</span>`
     }
+      // Checks if a genre property exits in the chosenQuote object and includes it in the HTML if it does
+    if (chosenQuote.genre) {
+      displayHTML += `<br><span class="genre">Genre: ${chosenQuote.genre.toString()}</span>`
+    }
     // Adds closing paragraph tag
     displayHTML += `</p>`
 

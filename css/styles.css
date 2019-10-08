@@ -71,6 +71,10 @@ body {
   font-style: normal;
 }
 
+.genre {
+  font-style: normal;
+}
+
 #loadQuote {
   position: fixed;
   width: 12em;
